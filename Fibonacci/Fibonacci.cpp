@@ -1,0 +1,26 @@
+#include <iostream>
+
+class Fibonacci
+{
+//private:
+    //int sum, a, b;
+public:
+    int generate(int n)
+    {
+        if (n <= 2)
+        {
+            return 1;
+        }
+        else
+        {
+            return generate(n - 2) + generate(n - 1);
+        }
+    }
+};
+
+int main()
+{
+    Fibonacci fib;
+    std::cout << fib.generate(5000);
+}
+
