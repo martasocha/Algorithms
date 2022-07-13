@@ -27,7 +27,7 @@ public:
 
 	//Praca domowa:
 	void copyTo(Vector& other, unsigned int index); // skopiuj zawartosc wektora other do indeksu w podane miejsce, przesuwa elementy od indekx , skopiowac zawartosc wekora other od podanego miejsca
-	void remove(unsigned int from, unsigned int to); // uwua wiele wartosci od from do to
+	void remove(unsigned int from, unsigned int to); // usuwa wiele wartosci od from do to
 	void pop_back(); // usuwa ostatni element, zmniejszamy size
 
 private: //podkreslinik do pol prywatnych

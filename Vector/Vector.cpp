@@ -113,7 +113,7 @@ void Vector::push_back(const int& value)
 	{
 		reserve((_capacity+1) * 2);
 	}
-	_data[_size++] = value; //push back odklada dane w miejsce dize
+	_data[_size++] = value; //push back odklada dane w miejsce size
 
 }
 
@@ -139,6 +139,43 @@ Vector& Vector::operator=(const Vector& other)
 	}
 
 	return *this; //operator wy³uskania, this to aktualny obiekt na rzecz ktorego wywolalismy operator, wskazuemy na caly obiekt
+}
+
+void Vector::copyTo(Vector& other, unsigned int index)
+{
+	if (_size >= _capacity)
+	{
+		reserve((_capacity + 1) * 2);
+	}
+	//int _newSize = _size + other._size - 1;
+
+	//int j = other._size;
+	for (unsigned int i = _size + other._size - 1; i >= index + other._size - 1; --i)
+	{
+		_data[i] = _data[i - other._size];
+		//j++;
+	}
+	for (unsigned int i = index; i <= (index + other._size - 1); ++i)
+	{
+		_data[i] = other[i - index];
+	}
+	_size = _size + other._size;
+
+}
+
+void Vector::remove(unsigned int from, unsigned int to)
+{
+	int length = to - from + 1;
+	for (unsigned int i = from; i < _size - length; ++i)
+	{
+		_data[i] = _data[i + length];
+	}
+	_size = _size - length;
+}
+
+void Vector::pop_back()
+{
+	--_size;	
 }
  
 //zwracamy wskaznik na this (zawsze operator przypisania zwraca wskaznik na this, czyli obiekt ktory zostal zmodyfikowany
